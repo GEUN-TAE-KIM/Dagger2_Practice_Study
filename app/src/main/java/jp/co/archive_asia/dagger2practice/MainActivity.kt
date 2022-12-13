@@ -11,6 +11,9 @@ class MainActivity : AppCompatActivity() {
 
     //필드 주입(Field Injection)
     // -> 필드가 정의된 인스턴스를 필드 자체에 값을 주입하는 방식
+
+    //메서드 주입(Method Injection)
+    // -> 메서드의 파라미터 입력 값에 Provider에 제공하는 인스턴스를 주입하는 방식
     @Inject
     lateinit var car : Car
 
