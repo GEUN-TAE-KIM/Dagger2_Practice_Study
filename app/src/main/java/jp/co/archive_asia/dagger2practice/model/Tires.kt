@@ -1,4 +1,4 @@
-package jp.co.archive_asia.dagger2practice
+package jp.co.archive_asia.dagger2practice.model
 
 import android.util.Log
 

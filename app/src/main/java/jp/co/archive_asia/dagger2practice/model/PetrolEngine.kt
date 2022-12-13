@@ -1,6 +1,7 @@
-package jp.co.archive_asia.dagger2practice
+package jp.co.archive_asia.dagger2practice.model
 
 import android.util.Log
+import jp.co.archive_asia.dagger2practice.model.Engine
 import javax.inject.Inject
 
 class PetrolEngine @Inject constructor(): Engine {

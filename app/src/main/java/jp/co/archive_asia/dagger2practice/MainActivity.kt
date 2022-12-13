@@ -2,6 +2,9 @@ package jp.co.archive_asia.dagger2practice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import jp.co.archive_asia.dagger2practice.component.DaggerCarComponent
+import jp.co.archive_asia.dagger2practice.model.Car
+import jp.co.archive_asia.dagger2practice.moduel.DieselPetrolEngineModule
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +25,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Interface 구현하는 Dagger(xxx)Component 객체를 반환하는 create() 메서드를 제공
-        val carComponent : CarComponent = DaggerCarComponent.create()
+        //val carComponent : CarComponent = DaggerCarComponent.create()
+
+        val carComponent = DaggerCarComponent
+            .builder()
+            .dieselPetrolEngineModule(DieselPetrolEngineModule(100))
+            .build()
         carComponent.inject(this)
 
         car.drive()
