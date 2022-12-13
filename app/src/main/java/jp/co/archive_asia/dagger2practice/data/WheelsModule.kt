@@ -1,7 +1,10 @@
-package jp.co.archive_asia.dagger2practice
+package jp.co.archive_asia.dagger2practice.data
 
 import dagger.Module
 import dagger.Provides
+import jp.co.archive_asia.dagger2practice.Rims
+import jp.co.archive_asia.dagger2practice.Tires
+import jp.co.archive_asia.dagger2practice.Wheels
 
 @Module
 class WheelsModule {

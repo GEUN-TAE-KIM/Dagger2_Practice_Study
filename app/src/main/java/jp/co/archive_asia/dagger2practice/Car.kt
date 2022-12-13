@@ -10,6 +10,7 @@ const val TAG = "Dagger Car"
 class Car @Inject constructor(val wheels: Wheels, val engine: Engine) {
 
     fun drive() {
+        engine.start()
         Log.d(TAG, "나는 드라이버")
     }
 
