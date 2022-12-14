@@ -18,7 +18,10 @@ class MainActivity : AppCompatActivity() {
     //메서드 주입(Method Injection)
     // -> 메서드의 파라미터 입력 값에 Provider에 제공하는 인스턴스를 주입하는 방식
     @Inject
-    lateinit var car : Car
+    lateinit var car1 : Car
+
+    @Inject
+    lateinit var car2 : Car
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +32,14 @@ class MainActivity : AppCompatActivity() {
 
         val carComponent = DaggerCarComponent
             .builder()
-            .dieselPetrolEngineModule(DieselPetrolEngineModule(100))
+            .horsePower(150)
+            .engineCapacity(1400)
+            //.dieselPetrolEngineModule(DieselPetrolEngineModule(100))
             .build()
         carComponent.inject(this)
 
-        car.drive()
+        car1.drive()
+        car2.drive()
+
     }
 }
