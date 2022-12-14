@@ -4,15 +4,17 @@ import dagger.BindsInstance
 import dagger.Component
 import jp.co.archive_asia.dagger2practice.MainActivity
 import jp.co.archive_asia.dagger2practice.model.Car
+import jp.co.archive_asia.dagger2practice.model.PerActivity
 import jp.co.archive_asia.dagger2practice.moduel.DieselPetrolEngineModule
 import jp.co.archive_asia.dagger2practice.moduel.PetrolEngineModule
 import jp.co.archive_asia.dagger2practice.moduel.WheelsModule
 import javax.inject.Named
 import javax.inject.Singleton
 
-@Singleton
+@PerActivity
 //클래스의 인스턴스를 모아 놓는 저장소 역활. 각 인스턴스들을 모듈 단위로 제공
-@Component(modules = [WheelsModule::class, PetrolEngineModule::class])//, PetrolEngineModule::class])
+@Component(dependencies = [ApplicationComponent::class] ,
+    modules = [WheelsModule::class, PetrolEngineModule::class])//, PetrolEngineModule::class])
 interface CarComponent {
     fun getCar(): Car
 
@@ -35,6 +37,8 @@ interface CarComponent {
         // 인스턴스의 타입이 같을 때 이름을 설정하여 주입 하는 것
         @BindsInstance
         fun engineCapacity(@Named("engineCapacity")cap: Int): Builder
+
+        fun getApplicationComponent(appComponent: ApplicationComponent): Builder
 
         fun build(): CarComponent
     }
