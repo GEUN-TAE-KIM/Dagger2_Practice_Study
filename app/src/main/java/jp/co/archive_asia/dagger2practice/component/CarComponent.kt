@@ -2,6 +2,7 @@ package jp.co.archive_asia.dagger2practice.component
 
 import dagger.BindsInstance
 import dagger.Component
+import dagger.Subcomponent
 import jp.co.archive_asia.dagger2practice.MainActivity
 import jp.co.archive_asia.dagger2practice.model.Car
 import jp.co.archive_asia.dagger2practice.model.PerActivity
@@ -13,8 +14,9 @@ import javax.inject.Singleton
 
 @PerActivity
 //클래스의 인스턴스를 모아 놓는 저장소 역활. 각 인스턴스들을 모듈 단위로 제공
-@Component(dependencies = [ApplicationComponent::class] ,
-    modules = [WheelsModule::class, PetrolEngineModule::class])//, PetrolEngineModule::class])
+/*@Component(dependencies = [ApplicationComponent::class] ,
+    modules = [WheelsModule::class, PetrolEngineModule::class])//, PetrolEngineModule::class])*/
+@Subcomponent(modules = [WheelsModule::class, DieselPetrolEngineModule::class])
 interface CarComponent {
     fun getCar(): Car
 
@@ -24,7 +26,7 @@ interface CarComponent {
     // Builder를 따로 설정하기 위해서 Component.Builder를 선언
     // 기존 빌더와 달라진 점은
     // -> 빌더 내부에 메서드가 들어가고 해당 메서드를 통해 값을 세팅
-    @Component.Builder
+/*    @Component.Builder
     interface Builder {
 
         // 특정 인스턴스를 Provide하는 @BindsInstance가 Component이 빌더안에 설정되면 해당 Component는
@@ -41,5 +43,5 @@ interface CarComponent {
         fun getApplicationComponent(appComponent: ApplicationComponent): Builder
 
         fun build(): CarComponent
-    }
+    }*/
 }

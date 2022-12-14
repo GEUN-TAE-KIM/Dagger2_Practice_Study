@@ -2,8 +2,8 @@ package jp.co.archive_asia.dagger2practice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import jp.co.archive_asia.dagger2practice.component.DaggerCarComponent
 import jp.co.archive_asia.dagger2practice.model.Car
+import jp.co.archive_asia.dagger2practice.model.DieselEngine
 import jp.co.archive_asia.dagger2practice.moduel.DieselPetrolEngineModule
 import javax.inject.Inject
 
@@ -41,14 +41,18 @@ class MainActivity : AppCompatActivity() {
               */
         //(applicationContext as Dagger2CarApplication).carComponent.inject(this)
 
-        val carComponent = DaggerCarComponent
+        /*val carComponent = DaggerCarComponent
             .builder()
             .horsePower(120)
             .engineCapacity(1400)
             .getApplicationComponent((applicationContext as Dagger2CarApplication).appComponent)
             .build()
 
-        carComponent.inject(this)
+        carComponent.inject(this)*/
+
+        (applicationContext as Dagger2CarApplication).appComponent
+            .getCarComponent(DieselPetrolEngineModule(120))
+            .inject(this)
 
         car1.drive()
         car2.drive()
