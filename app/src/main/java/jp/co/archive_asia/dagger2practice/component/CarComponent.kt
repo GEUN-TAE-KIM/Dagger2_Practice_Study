@@ -16,7 +16,9 @@ import javax.inject.Singleton
 //클래스의 인스턴스를 모아 놓는 저장소 역활. 각 인스턴스들을 모듈 단위로 제공
 /*@Component(dependencies = [ApplicationComponent::class] ,
     modules = [WheelsModule::class, PetrolEngineModule::class])//, PetrolEngineModule::class])*/
-@Subcomponent(modules = [WheelsModule::class, DieselPetrolEngineModule::class])
+
+//여러 Component들을 쓸수 있게 의존 관게를 하고 상위에 프로바이더를 쓸 수 있도록 하는 것
+@Subcomponent(modules = [WheelsModule::class, PetrolEngineModule::class])
 interface CarComponent {
     fun getCar(): Car
 
@@ -44,4 +46,17 @@ interface CarComponent {
 
         fun build(): CarComponent
     }*/
+
+    @Subcomponent.Builder
+    interface Builder {
+
+        @BindsInstance
+        fun horsePower(@Named("horsePower")hp: Int): Builder
+
+        @BindsInstance
+        fun engineCapacity(@Named("engineCapacity")cap: Int): Builder
+
+        fun build(): CarComponent
+
+    }
 }

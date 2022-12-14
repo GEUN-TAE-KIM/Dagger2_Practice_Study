@@ -10,6 +10,8 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [DriveModule::class])
 interface ApplicationComponent {
-    //fun getDriver(): Driver
-    fun getCarComponent(dieselPetrolEngineModule: DieselPetrolEngineModule): CarComponent
+    // fun getDriver(): Driver
+   // fun getCarComponent(dieselPetrolEngineModule: DieselPetrolEngineModule): CarComponent
+
+    fun getCarComponentBuilder(): CarComponent.Builder
 }

@@ -50,8 +50,15 @@ class MainActivity : AppCompatActivity() {
 
         carComponent.inject(this)*/
 
-        (applicationContext as Dagger2CarApplication).appComponent
+       /* (applicationContext as Dagger2CarApplication).appComponent
             .getCarComponent(DieselPetrolEngineModule(120))
+            .inject(this)*/
+
+        (applicationContext as Dagger2CarApplication).appComponent
+            .getCarComponentBuilder()
+            .horsePower(120)
+            .engineCapacity(1400)
+            .build()
             .inject(this)
 
         car1.drive()
