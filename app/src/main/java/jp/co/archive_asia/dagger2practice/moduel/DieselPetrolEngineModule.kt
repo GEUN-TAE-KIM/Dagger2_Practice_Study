@@ -9,5 +9,5 @@ import jp.co.archive_asia.dagger2practice.model.Engine
 class DieselPetrolEngineModule(val horsePower: Int) {
 
     @Provides
-    fun bindEngine(): Engine = DieselEngine(horsePower)
+    fun provideEngine(): Engine = DieselEngine(horsePower)
 }
