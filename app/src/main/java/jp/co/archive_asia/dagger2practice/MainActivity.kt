@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
               */
         //(applicationContext as Dagger2CarApplication).carComponent.inject(this)
 
+
         /*val carComponent = DaggerCarComponent
             .builder()
             .horsePower(120)
@@ -50,16 +51,25 @@ class MainActivity : AppCompatActivity() {
 
         carComponent.inject(this)*/
 
+        //TODO 서브컴포넌트
        /* (applicationContext as Dagger2CarApplication).appComponent
             .getCarComponent(DieselPetrolEngineModule(120))
             .inject(this)*/
 
-        (applicationContext as Dagger2CarApplication).appComponent
+        //TODO 서브컴포넌트 빌더
+       /* (applicationContext as Dagger2CarApplication).appComponent
             .getCarComponentBuilder()
             .horsePower(120)
             .engineCapacity(1400)
             .build()
+            .inject(this)*/
+
+        //TODO 컴포넌트 팩토리
+        (applicationContext as Dagger2CarApplication).appComponent
+            .getCarComponentFactory()
+            .create(100,1300)
             .inject(this)
+
 
         car1.drive()
         car2.drive()

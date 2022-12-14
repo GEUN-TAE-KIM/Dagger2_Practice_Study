@@ -6,13 +6,10 @@ import jp.co.archive_asia.dagger2practice.model.Driver
 import javax.inject.Singleton
 
 @Module
-class DriveModule {
+class DriveModule(val name:String) {
 
-    companion object {
-
-        @JvmStatic
         @Singleton
         @Provides
-        fun drive(): Driver = Driver()
-    }
+        fun drive(): Driver = Driver(name)
+
 }

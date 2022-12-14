@@ -3,6 +3,7 @@ package jp.co.archive_asia.dagger2practice
 import android.app.Application
 import jp.co.archive_asia.dagger2practice.component.ApplicationComponent
 import jp.co.archive_asia.dagger2practice.component.DaggerApplicationComponent
+import jp.co.archive_asia.dagger2practice.moduel.DriveModule
 
 class Dagger2CarApplication: Application() {
     // lateinit var carComponent: CarComponent
@@ -11,7 +12,10 @@ class Dagger2CarApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        appComponent = DaggerApplicationComponent.create()
+       appComponent = DaggerApplicationComponent.factory().create(DriveModule("GeunTae"))
+
+
+       // appComponent = DaggerApplicationComponent.create()
       /*  carComponent =
             DaggerCarComponent
             .builder()

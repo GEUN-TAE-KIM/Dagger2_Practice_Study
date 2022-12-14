@@ -47,7 +47,9 @@ interface CarComponent {
         fun build(): CarComponent
     }*/
 
-    @Subcomponent.Builder
+
+    //어떤 Component의 하위에 포함되는 컴포넌트 부모 모듈과 컴포넌트의 프로바이더를 모두 사용 가능
+   /* @Subcomponent.Builder
     interface Builder {
 
         @BindsInstance
@@ -58,5 +60,13 @@ interface CarComponent {
 
         fun build(): CarComponent
 
+    }*/
+
+    @Subcomponent.Factory
+    interface Factory {
+        fun create(
+            @BindsInstance @Named("horsePower")hp: Int,
+            @BindsInstance @Named("engineCapacity")cap: Int
+        ): CarComponent
     }
 }

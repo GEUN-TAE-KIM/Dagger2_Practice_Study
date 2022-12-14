@@ -1,5 +1,7 @@
 package jp.co.archive_asia.dagger2practice.model
 
-class Driver {
+import javax.inject.Inject
+
+class Driver @Inject constructor(val name: String) {
 
 }
